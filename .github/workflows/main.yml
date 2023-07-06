@@ -28,7 +28,7 @@ jobs:
       - name: Docker Build
         run:  docker build -t spring-cicd .
               docker tag spring-cicd jiwon27/spring-cicd:${GITHUB_SHA::7}
-              docker push jiwon27/pring-cicd:${GITHUB_SHA::7}
+              docker push jiwon27/spring-cicd:${GITHUB_SHA::7}
       - name: Deploy
         uses: appleboy/ssh-action@master
         with:
