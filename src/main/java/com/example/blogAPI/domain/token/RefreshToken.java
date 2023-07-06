@@ -29,6 +29,7 @@ public class RefreshToken {
   }
 
   // 이 부분 설명 놓침..그냥 뭔가 리스페시토큰이 만려되었을때랑관련잇는거같음.
+  // 이 코드 만든 이유는 강의 듣기.
   public RefreshToken update(String newRefreshToken){
     this.refreshToken = newRefreshToken;
     return this;

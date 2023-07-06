@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @RequiredArgsConstructor
-public class TokenAuthenticaionFilter extends OncePerRequestFilter {
+public class TokenAuthenticationFilter extends OncePerRequestFilter {
 
   private final TokenProvider tokenProvider; //유효성 확인하는게 필터 앞단에서 동작해야하니까 호출
   private final static String HEADER_AUTHORIZATION = "Authorization"; //여기서 헤더는 http의 헤더를 말함
