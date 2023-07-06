@@ -28,8 +28,8 @@ jobs:
       - name: Docker Build
         run:  docker build -t spring-cicd .
       - name: Docker change Tag
-        run : docker tag spring-cicd jiwon27/spring-cicd:${GITHUB_SHA::7}
-              docker push jiwon27/spring-cicd:${GITHUB_SHA::7}
+        run : docker tag spring-cicd ${{ secrets.DOCKER_HUB_USERNAME }}/spring-cicd:${GITHUB_SHA::7}
+              docker push ${{ secrets.DOCKER_HUB_USERNAME }}/spring-cicd:${GITHUB_SHA::7}
       - name: Deploy
         uses: appleboy/ssh-action@master
         with:
@@ -38,8 +38,8 @@ jobs:
           key: ${{ secrets.KEY }}
           envs: GITHUB_SHA
           script: |
-            docker pull jiwon27/spring-cicd:${GITHUB_SHA::7}
-            docker tag jiwon27/spring-cicd:${GITHUB_SHA::7} spring-cicd
+            docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/spring-cicd:${GITHUB_SHA::7}
+            docker tag ${{ secrets.DOCKER_HUB_USERNAME }}/spring-cicd:${GITHUB_SHA::7} spring-cicd
             docker stop server
             docker rm -f server
             docker run -d --name server -p 8080:8080 spring-cicd
